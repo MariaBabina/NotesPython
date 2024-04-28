@@ -50,3 +50,12 @@ def delete_note(note_id):
         os.remove(filename)
     else:
         print("WARNING: Note not found.")
+
+
+def read_notes():
+    notes = []
+    for file in os.listdir("notes"):
+        with open(os.path.join("notes", file), 'r') as f:
+            note = json.load(f)
+            notes.append(note)
+    return notes
